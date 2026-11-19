@@ -41,11 +41,11 @@ cleanup() {
 trap cleanup SIGINT SIGTERM EXIT
 
 # 1. Start FastAPI MTE Backend
-echo "[1/3] Starting FastAPI MTE Backend on 127.0.0.1:8000..."
-cd "$SCRIPT_DIR/apps/api"
+echo "[1/3] Starting FastAPI MTE Backend on 127.0.0.1:8008..."
+cd "$SCRIPT_DIR"
 export PYTHONPATH="$SCRIPT_DIR"
 export PYTHONUNBUFFERED=1
-nohup "$SCRIPT_DIR/backend/.venv/bin/uvicorn" main:app --host 127.0.0.1 --port 8000 >> "$BACKEND_LOG" 2>&1 &
+nohup "$SCRIPT_DIR/backend/.venv/bin/uvicorn" backend.app.main:app --host 127.0.0.1 --port 8008 >> "$BACKEND_LOG" 2>&1 &
 BACKEND_PID=$!
 echo "$BACKEND_PID" >> "$PID_FILE"
 echo "      Backend started (PID: $BACKEND_PID, Log: $BACKEND_LOG)"

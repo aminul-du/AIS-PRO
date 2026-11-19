@@ -6,10 +6,10 @@ After=network.target
 [Service]
 Type=simple
 User=mcoreai
-WorkingDirectory=/home/mcoreai/AIS-PRO/sandbox/drive-evidence/apps/api
+WorkingDirectory=/home/mcoreai/AIS-PRO/sandbox/drive-evidence
 Environment=PYTHONPATH=/home/mcoreai/AIS-PRO/sandbox/drive-evidence
 Environment=PYTHONUNBUFFERED=1
-ExecStart=/home/mcoreai/AIS-PRO/sandbox/drive-evidence/backend/.venv/bin/uvicorn main:app --host 127.0.0.1 --port 8000
+ExecStart=/home/mcoreai/AIS-PRO/sandbox/drive-evidence/backend/.venv/bin/uvicorn backend.app.main:app --host 127.0.0.1 --port 8008
 Restart=always
 RestartSec=3
 StandardOutput=journal
