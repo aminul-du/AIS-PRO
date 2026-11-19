@@ -115,5 +115,7 @@ sandbox/secrets/*
 !sandbox/secrets/.gitkeep
 sandbox/evidence/bundles/*.tar.gz
 !sandbox/evidence/staging_ledger.log
+sandbox/evidence/logs/
+sandbox/evidence/supervisor.pids
 sandbox/drive-evidence/sandbox_runs/
 sandbox/drive-evidence/sample_drive/

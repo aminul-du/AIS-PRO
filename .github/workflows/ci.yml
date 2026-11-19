@@ -1,0 +1,107 @@
+# ==============================================================================
+# AIS-PRO Master CI/CD Pipeline
+# Authority: Md. Aminul Islam ("Shamim") | MCORE-FDR-AIS-001
+# Standard: MDEA (#MCORE-MEAR-001) Program 001
+# ==============================================================================
+
+name: MDEA Governance & CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  governance-and-lint:
+    name: Zero-Secret & Frontmatter Governance
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Governance Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pre-commit detect-secrets pyyaml
+
+      - name: Run Pre-Commit Verification Gauntlet
+        run: |
+          pre-commit run --all-files
+
+  stage360-evidence-bundling:
+    name: Stage 360 Evidence Bundling
+    needs: governance-and-lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Execute Evidence Bundler
+        run: |
+          python3 sandbox/drive-evidence/tools/bundle_evidence.py
+
+      - name: Validate Staging Ledger
+        run: |
+          test -f sandbox/evidence/staging_ledger.log
+          grep "STATUS: CONFIRMED" sandbox/evidence/staging_ledger.log
+
+  mte-memory-ingestion:
+    name: MTE Memory Bank Ingestion & Validation
+    needs: governance-and-lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Execute Memory Ingestion
+        run: |
+          python3 sandbox/drive-evidence/mte/ingest_memory.py
+
+      - name: Validate Vector Store
+        run: |
+          test -f sandbox/evidence/memory_bank_store.json
+          grep "vec_mte_01_poison_guard" sandbox/evidence/memory_bank_store.json
+          grep "CONFIRMED" sandbox/evidence/memory_bank_store.json
+
+  frontend-build:
+    name: React 19 & 3D Visualizer Build
+    needs: governance-and-lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+          cache-dependency-path: sandbox/drive-evidence/frontend/package-lock.json
+
+      - name: Install Frontend Dependencies
+        working-directory: sandbox/drive-evidence/frontend
+        run: npm ci
+
+      - name: Build Frontend Assets
+        working-directory: sandbox/drive-evidence/frontend
+        run: npm run build

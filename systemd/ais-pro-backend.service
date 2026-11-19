@@ -1,0 +1,24 @@
+[Unit]
+Description=AIS-PRO FastAPI Backend & Memory Trust Engine (MTE)
+Documentation=https://github.com/aminul-du/AIS-PRO
+After=network.target
+
+[Service]
+Type=simple
+User=mcoreai
+WorkingDirectory=/home/mcoreai/AIS-PRO/sandbox/drive-evidence/apps/api
+Environment=PYTHONPATH=/home/mcoreai/AIS-PRO/sandbox/drive-evidence
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/home/mcoreai/AIS-PRO/sandbox/drive-evidence/backend/.venv/bin/uvicorn main:app --host 127.0.0.1 --port 8000
+Restart=always
+RestartSec=3
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=ais-pro-backend
+
+# Resource ceiling
+LimitNOFILE=65536
+MemoryMax=2G
+
+[Install]
+WantedBy=default.target

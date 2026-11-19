@@ -1,0 +1,19 @@
+[Unit]
+Description=AIS-PRO React 19 Frontend & 3D Visualizer
+Documentation=https://github.com/aminul-du/AIS-PRO
+After=network.target ais-pro-backend.service
+
+[Service]
+Type=simple
+User=mcoreai
+WorkingDirectory=/home/mcoreai/AIS-PRO/sandbox/drive-evidence/frontend
+Environment=PORT=3000
+ExecStart=/home/mcoreai/.nvm/versions/node/v24.22.3/bin/npm run preview -- --port 3000 --host 127.0.0.1
+Restart=always
+RestartSec=3
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=ais-pro-frontend
+
+[Install]
+WantedBy=default.target

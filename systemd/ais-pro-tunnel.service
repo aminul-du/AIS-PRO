@@ -1,0 +1,25 @@
+[Unit]
+Description=AIS-PRO Cloudflare Edge Tunnel Daemon
+Documentation=https://github.com/aminul-du/AIS-PRO
+After=network.target network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=mcoreai
+WorkingDirectory=/home/mcoreai/AIS-PRO
+ExecStart=/home/mcoreai/.local/bin/cloudflared tunnel --config /tmp/cf_tunnel_config.yml run
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=ais-pro-tunnel
+
+# Sandboxing & security boundaries
+ProtectSystem=full
+ProtectHome=read-only
+ReadOnlyPaths=/home/mcoreai/AIS-PRO
+ReadWritePaths=/tmp /home/mcoreai/.cloudflared
+
+[Install]
+WantedBy=default.target
