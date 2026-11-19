@@ -40,7 +40,7 @@ MODE="${1:-all}"
 
 if [ "$MODE" == "--dev" ] || [ "$MODE" == "dev" ]; then
     echo "Starting in Live Development Mode (FastAPI + Vite HMR + Presentation)..."
-    
+
     # 1. FastAPI Unified Backend
     "$DIR/backend/.venv/bin/uvicorn" backend.app.main:app --host 0.0.0.0 --port "$API_PORT" --reload &
     BACKEND_PID=$!

@@ -10,12 +10,12 @@ last_reviewed: 2026-11-19
 
 # Unified Research Library Index & Knowledge Metadata Schema
 
-**Document ID:** MCORE-RES-001  
-**Authority:** Md. Aminul Islam ("Shamim") | `MCORE-FDR-AIS-001`  
-**Lab:** Autonomous Cognitive Systems & Security Group  
-**Organization:** Meticulous Core Ltd. (MCore)  
-**Standard:** Gemini Enterprise Agent Platform Memory Bank Integration  
-**Classification:** Canonical Research Index  
+**Document ID:** MCORE-RES-001
+**Authority:** Md. Aminul Islam ("Shamim") | `MCORE-FDR-AIS-001`
+**Lab:** Autonomous Cognitive Systems & Security Group
+**Organization:** Meticulous Core Ltd. (MCore)
+**Standard:** Gemini Enterprise Agent Platform Memory Bank Integration
+**Classification:** Canonical Research Index
 
 ---
 

@@ -10,8 +10,8 @@ last_reviewed: 2026-11-19
 
 # AIS-PRO
 
-> **Sovereign Intelligence & Master Enterprise Architecture Repository**  
-> **Meticulous Core Ltd. (MCore)** • *Engineering Intelligence for the World.*  
+> **Sovereign Intelligence & Master Enterprise Architecture Repository**
+> **Meticulous Core Ltd. (MCore)** • *Engineering Intelligence for the World.*
 > **Founder & Authority:** Md. Aminul Islam ("Shamim") | `MCORE-FDR-AIS-001`
 
 ---

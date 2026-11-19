@@ -10,17 +10,17 @@ last_reviewed: 2026-11-19
 
 # Strict Fabric Architecture & Domain Isolation Specification
 
-**Specification ID:** MCORE-SPEC-002  
-**Authority:** Md. Aminul Islam ("Shamim") | `MCORE-FDR-AIS-001`  
-**Organization:** Meticulous Core Ltd. (MCore)  
-**Governance Scope:** Kernel Namespaces, Network Routing & Domain Segregation  
-**Classification:** `isolated-mcore` • Lossless Core Standard  
+**Specification ID:** MCORE-SPEC-002
+**Authority:** Md. Aminul Islam ("Shamim") | `MCORE-FDR-AIS-001`
+**Organization:** Meticulous Core Ltd. (MCore)
+**Governance Scope:** Kernel Namespaces, Network Routing & Domain Segregation
+**Classification:** `isolated-mcore` • Lossless Core Standard
 
 ---
 
 ## 1. Executive Summary & Architectural Intent
 
-This specification establishes the **Strict Fabric Architecture** governing all execution environments, network boundaries, and memory domains under Meticulous Core Ltd. 
+This specification establishes the **Strict Fabric Architecture** governing all execution environments, network boundaries, and memory domains under Meticulous Core Ltd.
 
 The primary objectives of this fabric are:
 1. Complete cryptographic and network isolation between sovereign IP, open research, and cultural models.

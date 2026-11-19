@@ -10,9 +10,9 @@ last_reviewed: 2026-11-19
 
 # Architecture Directory (`architecture/`)
 
-**Authority:** Md. Aminul Islam ("Shamim") | `MCORE-FDR-AIS-001`  
-**Organization:** Meticulous Core Ltd. (MCore)  
-**Reference Blueprint:** MDEA (`#MCORE-MEAR-001`)  
+**Authority:** Md. Aminul Islam ("Shamim") | `MCORE-FDR-AIS-001`
+**Organization:** Meticulous Core Ltd. (MCore)
+**Reference Blueprint:** MDEA (`#MCORE-MEAR-001`)
 
 ---
 

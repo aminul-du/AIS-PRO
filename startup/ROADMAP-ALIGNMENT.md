@@ -10,13 +10,13 @@ last_reviewed: 2026-11-19
 
 # MDEA Strategic Roadmap Alignment & Execution Blueprint (2026–2030)
 
-**Strategic Document ID:** MCORE-STRAT-001  
-**Authority:** Md. Aminul Islam ("Shamim") | `MCORE-FDR-AIS-001`  
-**Organization:** Meticulous Core Ltd. (MCore)  
-**Reference Architecture:** MDEA (`#MCORE-MEAR-001`) — Program 001  
-**Executive Protocol:** `AI-DRIVEN-CEO-2026-MCore(MCB|G)` | MDEA v1.0  
-**Long-Horizon Target:** Safe Operational Sovereign Infrastructure 2050  
-**Classification:** `isolated-mcore` • Public & Strategic Governance Tier  
+**Strategic Document ID:** MCORE-STRAT-001
+**Authority:** Md. Aminul Islam ("Shamim") | `MCORE-FDR-AIS-001`
+**Organization:** Meticulous Core Ltd. (MCore)
+**Reference Architecture:** MDEA (`#MCORE-MEAR-001`) — Program 001
+**Executive Protocol:** `AI-DRIVEN-CEO-2026-MCore(MCB|G)` | MDEA v1.0
+**Long-Horizon Target:** Safe Operational Sovereign Infrastructure 2050
+**Classification:** `isolated-mcore` • Public & Strategic Governance Tier
 
 ---
 

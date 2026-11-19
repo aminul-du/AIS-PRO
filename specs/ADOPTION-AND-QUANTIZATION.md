@@ -10,11 +10,11 @@ last_reviewed: 2026-11-19
 
 # Specification Adoption Lifecycle & Quantization Governance Standard
 
-**Specification ID:** MCORE-SPEC-001  
-**Authority:** Md. Aminul Islam ("Shamim") | `MCORE-FDR-AIS-001`  
-**Organization:** Meticulous Core Ltd. (MCore)  
-**Governance Scope:** Architecture Decision Process & Knowledge Quantization  
-**Classification:** `isolated-mcore` • Lossless Core Standard  
+**Specification ID:** MCORE-SPEC-001
+**Authority:** Md. Aminul Islam ("Shamim") | `MCORE-FDR-AIS-001`
+**Organization:** Meticulous Core Ltd. (MCore)
+**Governance Scope:** Architecture Decision Process & Knowledge Quantization
+**Classification:** `isolated-mcore` • Lossless Core Standard
 
 ---
 

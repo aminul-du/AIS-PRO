@@ -10,9 +10,9 @@ last_reviewed: 2026-11-19
 
 # Research Directory (`research/`)
 
-**Authority:** Md. Aminul Islam ("Shamim") | `MCORE-FDR-AIS-001`  
-**Organization:** Meticulous Core Ltd. (MCore)  
-**Standard:** Gemini Enterprise Agent Platform Memory Bank Integration  
+**Authority:** Md. Aminul Islam ("Shamim") | `MCORE-FDR-AIS-001`
+**Organization:** Meticulous Core Ltd. (MCore)
+**Standard:** Gemini Enterprise Agent Platform Memory Bank Integration
 
 ---
 

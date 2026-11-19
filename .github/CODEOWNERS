@@ -1,0 +1,22 @@
+# ==============================================================================
+# AIS-PRO Repository Codeowners
+# Authority: Md. Aminul Islam ("Shamim") | MCORE-FDR-AIS-001
+# Reference Architecture: MDEA (#MCORE-MEAR-001)
+# ==============================================================================
+
+# Global architectural ownership and review mandate
+* @aminul-du
+
+# Core specifications and governance
+/specs/ @aminul-du
+/IDENTITY.md @aminul-du
+/README.md @aminul-du
+
+# Infrastructure and staging
+/architecture/ @aminul-du
+/sandbox/ @aminul-du
+
+# Research and strategy
+/research/ @aminul-du
+/startup/ @aminul-du
+/labs/ @aminul-du

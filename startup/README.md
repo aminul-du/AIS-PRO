@@ -10,9 +10,9 @@ last_reviewed: 2026-11-19
 
 # Startup Strategy Directory (`startup/`)
 
-**Authority:** Md. Aminul Islam ("Shamim") | `MCORE-FDR-AIS-001`  
-**Organization:** Meticulous Core Ltd. (MCore)  
-**Program:** MDEA Program 001: Execution Phase – Foundation (2026–2030)  
+**Authority:** Md. Aminul Islam ("Shamim") | `MCORE-FDR-AIS-001`
+**Organization:** Meticulous Core Ltd. (MCore)
+**Program:** MDEA Program 001: Execution Phase – Foundation (2026–2030)
 
 ---
 

@@ -10,9 +10,9 @@ last_reviewed: 2026-11-19
 
 # Labs Directory (`labs/`)
 
-**Authority:** Md. Aminul Islam ("Shamim") | `MCORE-FDR-AIS-001`  
-**Organization:** Meticulous Core Ltd. (MCore)  
-**Security Tier:** Experimental Sandbox • Refusal-First Isolation  
+**Authority:** Md. Aminul Islam ("Shamim") | `MCORE-FDR-AIS-001`
+**Organization:** Meticulous Core Ltd. (MCore)
+**Security Tier:** Experimental Sandbox • Refusal-First Isolation
 
 ---
 

@@ -18,7 +18,7 @@ def get_safe_path(subpath: str = "") -> Path:
 def list_drive_files(subpath: str = "") -> Dict[str, Any]:
     target_dir = get_safe_path(subpath)
     base_dir = get_active_drive_path().resolve()
-    
+
     if not target_dir.exists():
         return {
             "current_path": subpath,
@@ -32,7 +32,7 @@ def list_drive_files(subpath: str = "") -> Dict[str, Any]:
             stat = entry.stat()
             rel_path = str(Path(entry.path).relative_to(base_dir))
             is_doc = entry.name.endswith(".gdoc") or entry.name.endswith(".doc") or entry.name.endswith(".docx")
-            
+
             items.append({
                 "name": entry.name,
                 "path": rel_path,
@@ -64,7 +64,7 @@ def read_file_content(subpath: str) -> Dict[str, Any]:
     mime, _ = mimetypes.guess_type(str(file_path))
     content = ""
     is_binary = False
-    
+
     try:
         with open(file_path, "r", encoding="utf-8") as f:
             content = f.read()
@@ -110,7 +110,7 @@ def seed_sample_university_docs() -> Dict[str, Any]:
     """Generates university project starter docs if drive is empty."""
     base = get_active_drive_path()
     base.mkdir(parents=True, exist_ok=True)
-    
+
     # 1. Research Proposal Doc
     proposal_path = base / "University_Research_Proposal.gdoc"
     if not proposal_path.exists():

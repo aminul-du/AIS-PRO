@@ -1,6 +1,6 @@
 # sboxdrive-gdocs
 
-> **University Autonomous Systems Project**  
+> **University Autonomous Systems Project**
 > Python 3.14 Sandbox & Google Drive / Google Docs Web Interface with Colab Drive Integration
 
 ---

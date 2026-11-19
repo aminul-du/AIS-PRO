@@ -270,8 +270,8 @@
                 const res = await fetch(endpoint, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ 
-                        query: query, 
+                    body: JSON.stringify({
+                        query: query,
                         top_k: 3,
                         user_id: 'professor-evaluator',
                         memory_profile: 'academic-pmics-defense',
@@ -279,7 +279,7 @@
                     })
                 });
                 const data = await res.json();
-                
+
                 document.getElementById('resultBox').classList.remove('hidden');
                 document.getElementById('answerText').innerText = data.answer || 'No response returned';
 
@@ -294,7 +294,7 @@
                     const trust = h.trust_class || 'CONFIRMED';
                     div.innerHTML = `
                         <div class="flex items-center justify-between">
-                            <span class="text-blue-400 font-mono">[${i+1}] ${h.source}</span> 
+                            <span class="text-blue-400 font-mono">[${i+1}] ${h.source}</span>
                             <div class="flex items-center gap-1.5">
                                 <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-blue-500/10 text-blue-300 border border-blue-500/20">${vecId}</span>
                                 <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">${trust}</span>

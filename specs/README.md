@@ -10,9 +10,9 @@ last_reviewed: 2026-11-19
 
 # Specifications Directory (`specs/`)
 
-**Authority:** Md. Aminul Islam ("Shamim") | `MCORE-FDR-AIS-001`  
-**Organization:** Meticulous Core Ltd. (MCore)  
-**Standard:** MDEA v1.0 Architectural Decision Record (ADR) Framework  
+**Authority:** Md. Aminul Islam ("Shamim") | `MCORE-FDR-AIS-001`
+**Organization:** Meticulous Core Ltd. (MCore)
+**Standard:** MDEA v1.0 Architectural Decision Record (ADR) Framework
 
 ---
 

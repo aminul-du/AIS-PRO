@@ -10,17 +10,17 @@ last_reviewed: 2026-11-19
 
 # Stage 360 Drive Architecture & Cryptographic Staging Specification
 
-**Architecture Blueprint ID:** MCORE-ARCH-001  
-**Authority:** Md. Aminul Islam ("Shamim") | `MCORE-FDR-AIS-001`  
-**Organization:** Meticulous Core Ltd. (MCore)  
-**System Target:** Hybrid Cloud & Local Execution Bridge (`sboxdrive-gdocs` / `/content/drive`)  
-**Classification:** `isolated-mcore` • Lossless Governance Standard  
+**Architecture Blueprint ID:** MCORE-ARCH-001
+**Authority:** Md. Aminul Islam ("Shamim") | `MCORE-FDR-AIS-001`
+**Organization:** Meticulous Core Ltd. (MCore)
+**System Target:** Hybrid Cloud & Local Execution Bridge (`sboxdrive-gdocs` / `/content/drive`)
+**Classification:** `isolated-mcore` • Lossless Governance Standard
 
 ---
 
 ## 1. Architectural Intent & Problem Statement
 
-Modern AI execution requires a bridge between rapid exploratory notebook/sandboxed environments (e.g., Google Colab, dynamic drive mounts) and enterprise production infrastructure. 
+Modern AI execution requires a bridge between rapid exploratory notebook/sandboxed environments (e.g., Google Colab, dynamic drive mounts) and enterprise production infrastructure.
 
 **Stage 360 Drive** provides a high-integrity, cryptographically audited staging pipeline that:
 1. Connects dynamic cloud storage (`/content/drive`) to isolated Linux execution runtimes (Python 3.14 + Uvicorn) without data leakage.

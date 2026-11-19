@@ -1,0 +1,32 @@
+# ==============================================================================
+# AIS-PRO Pre-Commit Governance Hooks
+# Authority: Md. Aminul Islam ("Shamim") | MCORE-FDR-AIS-001
+# Standard: Zero-Secret Hygiene & Metadata Lossless Enforcement
+# ==============================================================================
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+        args: ['--maxkb=5000']
+      - id: detect-private-key
+
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+      - id: detect-secrets
+        args: ['--baseline', '.secrets.baseline']
+        exclude: package-lock\.json
+
+  - repo: local
+    hooks:
+      - id: lint-frontmatter
+        name: MDEA Frontmatter & Metadata Linter
+        entry: python3 scripts/lint_frontmatter.py
+        language: system
+        types: [markdown]
+        files: ^(specs/|research/|architecture/|startup/|labs/|IDENTITY\.md|README\.md)

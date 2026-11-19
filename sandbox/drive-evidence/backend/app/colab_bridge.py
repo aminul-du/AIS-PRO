@@ -20,7 +20,7 @@ def check_mount_status() -> Dict[str, Any]:
     active_path = get_active_drive_path()
     is_colab_native = os.path.exists("/content")
     is_mounted = COLAB_MOUNT_PATH.exists() and len(os.listdir(COLAB_MOUNT_PATH)) > 0 if COLAB_MOUNT_PATH.exists() else False
-    
+
     colab_bin = find_colab_cli()
 
     return {
@@ -41,7 +41,7 @@ def trigger_drive_mount(mount_path: str = "/content/drive") -> Dict[str, Any]:
             "error": "colab CLI binary not found in PATH or ~/.local/bin/colab",
             "mount_status": check_mount_status()
         }
-    
+
     try:
         # Run colab drivemount
         proc = subprocess.run(

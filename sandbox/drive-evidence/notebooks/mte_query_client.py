@@ -65,7 +65,7 @@ def run_mte_query(
     bundle = data.get("evidence_bundle", {})
     bundle_file = Path(output_bundle_path)
     bundle_file.write_text(json.dumps(bundle, indent=2))
-    
+
     print("=" * 60)
     print(f"🛡️  10-FILE EVIDENCE BUNDLE SAVED:")
     print(f"    Path      : {bundle_file.resolve()}")

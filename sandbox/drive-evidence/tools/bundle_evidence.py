@@ -42,7 +42,7 @@ def read_expected_spec_files(spec_path: Path) -> list:
         "09_rollback_runbook.md",
         "10_adr_ratification.md"
     ]
-    
+
     if not spec_path.exists():
         print(f"[WARN] Specification file not found at {spec_path}. Using canonical list.")
         return canonical_files
@@ -53,10 +53,10 @@ def read_expected_spec_files(spec_path: Path) -> list:
     # Search for files matching 01_... to 10_... pattern in the bundle definition
     matches = re.findall(r"├──\s+((?:0[1-9]|10)_[a-zA-Z0-9_.-]+)|└──\s+((?:0[1-9]|10)_[a-zA-Z0-9_.-]+)", content)
     extracted = [m[0] or m[1] for m in matches if (m[0] or m[1])]
-    
+
     if len(extracted) == 10:
         return extracted
-    
+
     return canonical_files
 
 
@@ -113,7 +113,7 @@ def append_to_ledger(ledger_path: Path, bundle_name: str, sha256_hash: str, file
     """Appends the SHA-256 root digest and bundle metadata to the tamper-proof ledger."""
     ledger_path.parent.mkdir(parents=True, exist_ok=True)
     timestamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-    
+
     entry = (
         f"[{timestamp}] BUNDLE: {bundle_name} | "
         f"SHA256: {sha256_hash} | "
@@ -162,7 +162,7 @@ def main():
     # 4. Compute SHA-256 root digest & append to ledger
     root_digest = compute_sha256(output_bundle_path)
     append_to_ledger(LEDGER_FILE, f"{bundle_id}.tar.gz", root_digest, len(expected_files))
-    
+
     print(f"[4/4] SHA-256 Root Digest: {root_digest}")
     print(f"      Appended to ledger:  {LEDGER_FILE}")
     print("================================================================================")

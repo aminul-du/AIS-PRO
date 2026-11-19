@@ -117,5 +117,3 @@ sandbox/evidence/bundles/*.tar.gz
 !sandbox/evidence/staging_ledger.log
 sandbox/drive-evidence/sandbox_runs/
 sandbox/drive-evidence/sample_drive/
-
-
