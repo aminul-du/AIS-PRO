@@ -12,7 +12,7 @@ export const App: React.FC = () => {
   const [listing, setListing] = useState<DriveListing | null>(null);
   const [currentPath, setCurrentPath] = useState('');
   const [selectedFile, setSelectedFile] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<'explorer' | 'docs' | 'sandbox' | 'library'>('explorer');
+  const [activeTab, setActiveTab] = useState<'explorer' | 'docs' | 'sandbox' | 'library'>('library');
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchStatus = useCallback(async () => {
