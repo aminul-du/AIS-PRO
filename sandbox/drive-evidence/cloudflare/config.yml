@@ -1,0 +1,14 @@
+tunnel: dfc0dfec-7922-4f84-bf5a-e06acaa98cc7
+credentials-file: /home/mcoreai/.cloudflared/dfc0dfec-7922-4f84-bf5a-e06acaa98cc7.json
+
+ingress:
+  # 1. PMICS Presentation Workspace (Static HTML frontend)
+  - hostname: gdocs.shorborno.ai
+    service: http://127.0.0.1:8080
+
+  # 2. mte-lab FastAPI Backend (/api/v1/query & /health)
+  - hostname: api-gdocs.shorborno.ai
+    service: http://127.0.0.1:8000
+
+  # 3. Mandatory Catch-all 404
+  - service: http_status:404

@@ -106,3 +106,16 @@ pnpm-debug.log*
 tmp/
 logs/
 *.log
+
+# --- Sandbox Environment Isolation ---
+sandbox/snapshots/*
+!sandbox/snapshots/.gitkeep
+sandbox/secrets/*.json
+sandbox/secrets/*
+!sandbox/secrets/.gitkeep
+sandbox/evidence/bundles/*.tar.gz
+!sandbox/evidence/staging_ledger.log
+sandbox/drive-evidence/sandbox_runs/
+sandbox/drive-evidence/sample_drive/
+
+
