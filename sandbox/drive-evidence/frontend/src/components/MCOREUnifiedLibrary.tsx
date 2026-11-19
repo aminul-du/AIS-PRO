@@ -9,12 +9,12 @@ import * as THREE from 'three';
 // --- 3D AI Tutor Component ---
 const MCORECore: React.FC<{ isPulsing: boolean }> = ({ isPulsing }) => {
   const meshRef = useRef<THREE.Mesh>(null);
-  
+
   useFrame((state, delta) => {
     if (meshRef.current) {
       meshRef.current.rotation.x += delta * 0.5;
       meshRef.current.rotation.y += delta * 0.5;
-      
+
       if (isPulsing) {
         const scale = 1 + Math.sin(state.clock.elapsedTime * 5) * 0.1;
         meshRef.current.scale.set(scale, scale, scale);
@@ -27,8 +27,8 @@ const MCORECore: React.FC<{ isPulsing: boolean }> = ({ isPulsing }) => {
   return (
     <mesh ref={meshRef}>
       <icosahedronGeometry args={[2, 1]} />
-      <meshStandardMaterial 
-        color={isPulsing ? "#10b981" : "#3b82f6"} 
+      <meshStandardMaterial
+        color={isPulsing ? "#10b981" : "#3b82f6"}
         wireframe={true}
         emissive={isPulsing ? "#059669" : "#1d4ed8"}
         emissiveIntensity={0.5}
@@ -182,15 +182,15 @@ export const MCOREUnifiedLibrary: React.FC = () => {
       <div className="flex-1 relative bg-slate-900 p-6 overflow-hidden">
         {activeTab === 'topology' && (
           <div className="h-full w-full border border-slate-700 rounded-xl bg-slate-800/50 overflow-hidden">
-            <CytoscapeComponent 
-              elements={cyElements} 
+            <CytoscapeComponent
+              elements={cyElements}
               stylesheet={cyStylesheet as any}
-              style={{ width: '100%', height: '100%' }} 
+              style={{ width: '100%', height: '100%' }}
               layout={{ name: 'cose', padding: 50 }}
             />
           </div>
         )}
-        
+
         {activeTab === 'traffic' && (
           <div className="h-full w-full flex items-center justify-center border border-slate-700 rounded-xl bg-slate-800/50">
             <ReactECharts option={trafficOptions} style={{ height: '100%', width: '100%' }} />
@@ -234,7 +234,7 @@ export const MCOREUnifiedLibrary: React.FC = () => {
                         )}
                       </div>
                       <div className="whitespace-pre-wrap">{response.answer}</div>
-                      
+
                       {response.retrieval_hits && response.retrieval_hits.length > 0 && (
                         <div className="mt-4 pt-4 border-t border-blue-500/20">
                           <p className="text-xs text-slate-400 font-mono mb-2 flex items-center"><ShieldAlert className="w-3 h-3 mr-1"/> Trust Context Sourced From:</p>
@@ -257,7 +257,7 @@ export const MCOREUnifiedLibrary: React.FC = () => {
                   </div>
                 )}
               </div>
-              
+
               <div className="relative">
                 <input
                   type="text"
@@ -268,7 +268,7 @@ export const MCOREUnifiedLibrary: React.FC = () => {
                   onKeyDown={(e) => e.key === 'Enter' && handleQuery()}
                   disabled={loading}
                 />
-                <button 
+                <button
                   className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-blue-600 hover:bg-blue-500 rounded-md text-white transition-colors disabled:opacity-50"
                   onClick={handleQuery}
                   disabled={loading || !query.trim()}

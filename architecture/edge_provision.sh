@@ -47,18 +47,18 @@ echo "      Instance $EDGE_INSTANCE_NAME configuration scheduled."
 echo "[3/4] Configuring Cloudflare Tunnel: $TUNNEL_NAME..."
 # (Uncomment in live execution)
 cloudflared tunnel create "$TUNNEL_NAME" || true
-cloudflared tunnel route dns "$TUNNEL_NAME" research.mcoreai.com || true
-cloudflared tunnel route dns "$TUNNEL_NAME" library.mcoreai.cloud || true
+cloudflared tunnel route dns "$TUNNEL_NAME" research.mcoreai.tech || true
+cloudflared tunnel route dns "$TUNNEL_NAME" library.mcoreai.tech || true
 
 # Generate config.yml
 cat <<EOF > /tmp/cf_tunnel_config.yml
 tunnel: $TUNNEL_NAME
-credentials-file: /root/.cloudflared/credentials.json
+credentials-file: /home/mcoreai/.cloudflared/fd5bd793-6d5f-45a3-9f7d-200009b12f25.json
 
 ingress:
-  - hostname: research.mcoreai.com
+  - hostname: research.mcoreai.tech
     service: http://localhost:3000
-  - hostname: library.mcoreai.cloud
+  - hostname: library.mcoreai.tech
     service: http://localhost:8000
   - service: http_status:404
 EOF
@@ -68,7 +68,7 @@ echo "      Tunnel configuration generated at /tmp/cf_tunnel_config.yml"
 # 4. Start Tunnel
 echo "[4/4] Starting Edge Tunnel Routing..."
 cloudflared tunnel --config /tmp/cf_tunnel_config.yml run &
-echo "      Edge routing ready: research.mcoreai.com -> :3000, library.mcoreai.cloud -> :8000"
+echo "      Edge routing ready: research.mcoreai.tech -> :3000, library.mcoreai.tech -> :8000"
 
 echo "================================================================================"
 echo ">>> Edge Provisioning & Tunnel Configuration Mapped. Ready for Live Deployment."
