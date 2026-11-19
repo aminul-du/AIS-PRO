@@ -1,0 +1,108 @@
+# ==============================================================================
+# AIS-PRO Repository .gitignore
+# Authority: MCORE-FDR-AIS-001 | Meticulous Core Ltd.
+# Standard: Zero-Secret & Strict Sovereign Isolation
+# ==============================================================================
+
+# --- Operating System & IDE Junk ---
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+[Dd]esktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+*.bak
+*.sublime-project
+*.sublime-workspace
+
+# --- Zero-Secret & Credential Protection Mandate ---
+# Private keys, certificates, tokens, and authorization stores
+*.pem
+*.key
+*.pkcs12
+*.pfx
+*.crt
+*.id_*
+id_rsa*
+id_ed25519*
+id_ecdsa*
+id_dsa*
+*.token
+*.auth
+credentials.db
+access_tokens.db
+default_configs.db
+application_default_credentials.json
+
+# Environment variables & runtime secrets
+.env
+.env.*
+.env*.local
+!.env.example
+*.local.env
+
+# --- Local & Private Knowledge Isolation ---
+# Prevent unreviewed or personal scratchpads from being published
+*.local.md
+*.private.md
+**/private/**
+private/
+local/
+scratch/
+sandbox_runs/
+evidence_bundles/raw/
+
+# --- Build, Package & Language Artifacts ---
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Node.js & Web
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.wrangler/
+.pnpm-store/
+
+# General caches & temp files
+.cache/
+.uv/
+*.tmp
+*.temp
+tmp/
+logs/
+*.log
