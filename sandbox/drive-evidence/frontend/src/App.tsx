@@ -4,6 +4,7 @@ import { ColabMountCard } from './components/ColabMountCard';
 import { DriveExplorer } from './components/DriveExplorer';
 import { DocViewer } from './components/DocViewer';
 import { SandboxRunner } from './components/SandboxRunner';
+import { MCOREUnifiedLibrary } from './components/MCOREUnifiedLibrary';
 import { SystemStatus, DriveListing } from './types';
 
 export const App: React.FC = () => {
@@ -11,7 +12,7 @@ export const App: React.FC = () => {
   const [listing, setListing] = useState<DriveListing | null>(null);
   const [currentPath, setCurrentPath] = useState('');
   const [selectedFile, setSelectedFile] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<'explorer' | 'docs' | 'sandbox'>('explorer');
+  const [activeTab, setActiveTab] = useState<'explorer' | 'docs' | 'sandbox' | 'library'>('explorer');
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchStatus = useCallback(async () => {
@@ -57,8 +58,8 @@ export const App: React.FC = () => {
     <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100">
       <Navbar
         status={status}
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
+        activeTab={activeTab as any}
+        setActiveTab={setActiveTab as any}
         onRefresh={refreshAll}
         isLoading={isLoading}
       />
@@ -98,11 +99,17 @@ export const App: React.FC = () => {
             <SandboxRunner />
           </div>
         )}
+
+        {activeTab === 'library' && (
+          <div className="h-[600px] w-full">
+            <MCOREUnifiedLibrary />
+          </div>
+        )}
       </main>
 
       {/* Footer */}
       <footer className="border-t border-slate-900 py-6 text-center text-xs text-slate-500 font-mono">
-        <p>sboxdrive-gdocs • Python 3.14 + Colab Drive Sandbox • University Autonomous Systems</p>
+        <p>AIS-PRO Sovereign Architecture • Meticulous Core Ltd. (MCore) • MCORE-FDR-AIS-001</p>
       </footer>
     </div>
   );

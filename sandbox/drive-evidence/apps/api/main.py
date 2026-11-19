@@ -257,37 +257,40 @@ def handle_query(req: QueryRequest):
     session_id = req.session_id or f"pmics-{str(uuid.uuid4())[:8]}"
     start_time = time.time()
 
-    # 1. Fetch retrieval hits from University Drive corpus
-    rev_id = req.revision_id or "rev-2026-v1"
-    corpus = [
-        {
-            "chunk_id": "chunk_pmics_01",
-            "vector_id": "vec_mte_01_poison_guard",
-            "revision_id": rev_id,
-            "trust_class": "CONFIRMED",
-            "source": "PMICS_Threat_Model.md",
-            "content": "Memory poisoning attacks corrupt retrieval indices by planting adversarial payloads with high vector similarity.",
-            "relevance_score": 0.942,
-        },
-        {
-            "chunk_id": "chunk_pmics_02",
-            "vector_id": "vec_mte_02_predictive_score",
-            "revision_id": rev_id,
-            "trust_class": "CONFIRMED",
-            "source": "Predictive_Mitigation_Design.gdoc",
-            "content": "Adaptive mitigation evaluates retrieval injection risk scores before query synthesis, partitioning unsafe memory chunks.",
-            "relevance_score": 0.915,
-        },
-        {
-            "chunk_id": "chunk_pmics_03",
-            "vector_id": "vec_mte_03_sandbox_guard",
-            "revision_id": rev_id,
-            "trust_class": "CONFIRMED",
-            "source": "Autonomous_Memory_Audit.csv",
-            "content": "Tool hijacking risks are suppressed by enforcing strict parameter isolation and verified execution bundles.",
-            "relevance_score": 0.887,
-        },
-    ]
+    # 1. Fetch retrieval hits from Unified Research Library Memory Bank
+    rev_id = req.revision_id or "rev-2026-v2"
+    memory_store_path = REPO_ROOT / "sandbox" / "evidence" / "memory_bank_store.json"
+    corpus = []
+    if memory_store_path.exists():
+        try:
+            store_data = json.loads(memory_store_path.read_text(encoding="utf-8"))
+            for entry in store_data:
+                if entry.get("trust_class") == "CONFIRMED":
+                    corpus.append({
+                        "chunk_id": f"chunk_{entry.get('document_id')}",
+                        "vector_id": entry.get("vector_id"),
+                        "revision_id": entry.get("revision", rev_id),
+                        "trust_class": entry.get("trust_class"),
+                        "source": entry.get("title"),
+                        "content": f"{entry.get('title')} ({entry.get('domain_scope')}): {entry.get('abstract', '')}",
+                        "relevance_score": 0.95, # Mock high relevance for unified library
+                    })
+        except Exception as e:
+            print(f"Error reading memory_bank_store: {e}")
+
+    if not corpus:
+        # Fallback if store is empty or unreadable
+        corpus = [
+            {
+                "chunk_id": "chunk_pmics_01",
+                "vector_id": "vec_mte_01_poison_guard",
+                "revision_id": rev_id,
+                "trust_class": "CONFIRMED",
+                "source": "PMICS_Threat_Model.md",
+                "content": "Memory poisoning attacks corrupt retrieval indices by planting adversarial payloads with high vector similarity.",
+                "relevance_score": 0.942,
+            }
+        ]
 
     retrieval_hits = corpus[:req.top_k]
     for c in retrieval_hits:

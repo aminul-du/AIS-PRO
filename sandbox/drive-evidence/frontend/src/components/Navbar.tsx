@@ -1,11 +1,11 @@
 import React from 'react';
-import { HardDrive, Terminal, FileText, CheckCircle2, AlertCircle, RefreshCw } from 'lucide-react';
+import { HardDrive, Terminal, FileText, CheckCircle2, AlertCircle, RefreshCw, Layers } from 'lucide-react';
 import { SystemStatus } from '../types';
 
 interface NavbarProps {
   status: SystemStatus | null;
-  activeTab: 'explorer' | 'docs' | 'sandbox';
-  setActiveTab: (tab: 'explorer' | 'docs' | 'sandbox') => void;
+  activeTab: 'explorer' | 'docs' | 'sandbox' | 'library';
+  setActiveTab: (tab: 'explorer' | 'docs' | 'sandbox' | 'library') => void;
   onRefresh: () => void;
   isLoading: boolean;
 }
@@ -26,12 +26,12 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-bold text-lg tracking-tight text-white">sboxdrive-gdocs</span>
+              <span className="font-bold text-lg tracking-tight text-white">AIS-PRO</span>
               <span className="text-xs px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 font-mono">
-                Python 3.14
+                Stage 360
               </span>
             </div>
-            <p className="text-xs text-slate-400">Google Drive & Docs University Sandbox</p>
+            <p className="text-xs text-slate-400">Meticulous Core Ltd.</p>
           </div>
         </div>
 
@@ -69,6 +69,17 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             <Terminal className="w-4 h-4" />
             Python Sandbox
+          </button>
+          <button
+            onClick={() => setActiveTab('library')}
+            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
+              activeTab === 'library'
+                ? 'bg-blue-600 text-white shadow-sm'
+                : 'text-slate-400 hover:text-slate-200'
+            }`}
+          >
+            <Layers className="w-4 h-4" />
+            MCORE Library
           </button>
         </div>
 
