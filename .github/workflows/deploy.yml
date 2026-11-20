@@ -46,20 +46,21 @@ jobs:
       - name: Extract, Rebuild & Restart Services on VM
         run: |
           gcloud compute ssh --quiet --zone=asia-east1-b ais-pro-edge --command='
-            set -euo pipefail
-            mkdir -p /home/mcoreai/ais-pro
-            tar -xzf /tmp/ais-pro-app.tar.gz -C /home/mcoreai/ais-pro
-            rm -f /tmp/ais-pro-app.tar.gz
+            sudo -u mcoreai bash -c "
+              set -euo pipefail
+              mkdir -p /home/mcoreai/ais-pro
+              tar -xzf /tmp/ais-pro-app.tar.gz -C /home/mcoreai/ais-pro
+              rm -f /tmp/ais-pro-app.tar.gz
 
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-            nvm use 20 || true
+              export NVM_DIR=\"\$HOME/.nvm\"
+              [ -s \"\$NVM_DIR/nvm.sh\" ] && . \"\$NVM_DIR/nvm.sh\"
+              nvm use 20 || true
 
-            cd /home/mcoreai/ais-pro/drive-evidence/frontend
-            export NODE_OPTIONS="--max-old-space-size=4096"
-            npm install
-            npm run build
-
+              cd /home/mcoreai/ais-pro/drive-evidence/frontend
+              export NODE_OPTIONS=\"--max-old-space-size=4096\"
+              npm install
+              npm run build
+            "
             sudo systemctl restart ais-api
             sudo systemctl is-active --quiet ais-api
             echo "✅ FastAPI Backend and Frontend successfully updated and active."
