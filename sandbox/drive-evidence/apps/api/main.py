@@ -230,6 +230,7 @@ def generate_10_file_evidence_bundle(
         }
     }
 
+@app.get("/api/status")
 @app.get("/health")
 def health_check():
     # Enforce MTE_ATTACKS_ENABLED=false
