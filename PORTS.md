@@ -16,7 +16,7 @@ This document establishes the official port assignments, network boundaries, and
 | :--- | :--- | :--- | :--- |
 | **3000** | **MCORE UI** | React / Nginx Static Server | Public Ingress (`research.mcoreai.tech`, `library.mcoreai.cloud`) |
 | **8000** | **MCORE API** | Python / FastAPI / Uvicorn | Reverse Proxied via Nginx (`/api/`) |
-| **18081** | **PMICS Lab Gateway** | Rust / Actix-Web / Warp | Public Ingress (`Labs.shorbornoai.com`) |
+| **18081** | **PMICS Lab Gateway** | Rust / Actix-Web / Warp | Public Ingress (`pmics.mcoreai.tech`, `labs.mcoreai.tech`, `Labs.shorbornoai.com`) |
 | **18082** | **PMICS AI Worker** | Python / Async Engine | Internal Loopback Only (`127.0.0.1:18082`) |
 | **18083** | **PMICS Lab Frontend / Evidence UI** | React / Vite Static Server | Internal Loopback / Proxied via Gateway |
 
