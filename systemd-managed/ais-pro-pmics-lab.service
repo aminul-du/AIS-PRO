@@ -1,0 +1,20 @@
+[Unit]
+Description=AIS-PRO Shorborno PMICS Lab
+After=network.target ais-pro-tunnel.service
+
+[Service]
+Type=simple
+User=mcoreai
+WorkingDirectory=/home/mcoreai/AIS-PRO/shorborno-pmics-lab
+Environment="GATEWAY_PORT=18081"
+Environment="WORKER_PORT=18082"
+Environment="DASHBOARD_PORT=18083"
+ExecStart=/bin/bash /home/mcoreai/AIS-PRO/shorborno-pmics-lab/start_pmics_lab.sh
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=ais-pro-pmics-lab
+
+[Install]
+WantedBy=default.target

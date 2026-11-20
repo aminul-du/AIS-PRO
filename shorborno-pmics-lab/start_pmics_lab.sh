@@ -1,5 +1,6 @@
 #!/bin/bash
 set -euo pipefail
+trap 'kill 0' EXIT INT TERM
 
 # Configurations
 GATEWAY_PORT=${GATEWAY_PORT:-18081}
