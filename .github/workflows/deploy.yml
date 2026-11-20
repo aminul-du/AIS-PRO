@@ -1,0 +1,72 @@
+name: Zero-Touch Edge Deployment Pipeline
+
+on:
+  push:
+    branches: [ main ]
+
+concurrency:
+  group: deploy-edge-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy-to-edge:
+    name: Deploy to ais-pro-edge VM
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Package Application Artifacts
+        run: |
+          cd sandbox
+          tar --exclude='drive-evidence/frontend/node_modules' \
+              --exclude='drive-evidence/apps/api/__pycache__' \
+              --exclude='drive-evidence/apps/api/venv' \
+              -czf /tmp/ais-pro-app.tar.gz drive-evidence
+          ls -lh /tmp/ais-pro-app.tar.gz
+
+      - name: Transfer Artifacts to Edge VM
+        run: |
+          gcloud compute scp --quiet --zone=asia-east1-b /tmp/ais-pro-app.tar.gz ais-pro-edge:/tmp/
+
+      - name: Extract, Rebuild & Restart Services on VM
+        run: |
+          gcloud compute ssh --quiet --zone=asia-east1-b ais-pro-edge --command='
+            set -euo pipefail
+            mkdir -p /home/mcoreai/ais-pro
+            tar -xzf /tmp/ais-pro-app.tar.gz -C /home/mcoreai/ais-pro
+            rm -f /tmp/ais-pro-app.tar.gz
+
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+            nvm use 20 || true
+
+            cd /home/mcoreai/ais-pro/drive-evidence/frontend
+            export NODE_OPTIONS="--max-old-space-size=4096"
+            npm install
+            npm run build
+
+            sudo systemctl restart ais-api
+            sudo systemctl is-active --quiet ais-api
+            echo "✅ FastAPI Backend and Frontend successfully updated and active."
+          '
+
+      - name: Health Check Deployment Endpoints
+        run: |
+          echo "Verifying research endpoint..."
+          curl -f -I --retry 5 --retry-delay 3 https://research.mcoreai.tech
+          echo "Verifying API status endpoint..."
+          curl -f -s https://research.mcoreai.tech/api/status | jq .
