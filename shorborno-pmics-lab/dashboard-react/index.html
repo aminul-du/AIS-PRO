@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMICS Lab Dashboard</title>
+    <style>
+        body { font-family: system-ui, sans-serif; background: #0f172a; color: #f8fafc; padding: 2rem; }
+        .card { background: #1e293b; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
+        .text-green { color: #22c55e; }
+        .text-red { color: #ef4444; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>PMICS Lab Status Bridge</h1>
+        <p>Gateway Port: <span id="gateway-port">18081</span></p>
+        <p>Telemetry Status: <span id="telemetry-status" class="text-green">Online</span></p>
+        <h2>Recent Interceptions</h2>
+        <pre id="telemetry-log">Loading...</pre>
+    </div>
+    <script>
+        const GATEWAY_URL = window.GATEWAY_URL || 'http://127.0.0.1:18081';
+        async function fetchHealth() {
+            try {
+                const res = await fetch(`${GATEWAY_URL}/health`);
+                if (res.ok) document.getElementById('telemetry-status').innerText = 'Online (Verified)';
+            } catch (e) {
+                document.getElementById('telemetry-status').innerText = 'Offline';
+                document.getElementById('telemetry-status').className = 'text-red';
+            }
+        }
+        fetchHealth();
+    </script>
+</body>
+</html>

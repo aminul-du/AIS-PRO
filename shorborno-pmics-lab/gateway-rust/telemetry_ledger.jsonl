@@ -1,0 +1,3 @@
+{"payload":{"channel":"doc_upload","language_mode":"bengali","provenance":"verified"},"status":"passed","timestamp":"2026-11-20T10:44:40.816503657+00:00"}
+{"payload":{"channel":"user_chat","language_mode":"banglish","provenance":"verified"},"status":"passed","timestamp":"2026-11-20T10:44:40.823925501+00:00"}
+{"payload":{"channel":"mcp_tool","language_mode":"mixed","provenance":"spoofed"},"status":"failed","timestamp":"2026-11-20T10:44:40.830961210+00:00"}

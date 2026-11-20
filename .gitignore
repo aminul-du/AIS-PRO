@@ -119,3 +119,11 @@ sandbox/evidence/logs/
 sandbox/evidence/supervisor.pids
 sandbox/drive-evidence/sandbox_runs/
 sandbox/drive-evidence/sample_drive/
+
+# shorborno-pmics-lab ignores
+shorborno-pmics-lab/gateway-rust/target/
+shorborno-pmics-lab/ai-worker-python/.venv/
+shorborno-pmics-lab/**/*.log
+shorborno-pmics-lab/**/.env
+shorborno-pmics-lab/dashboard-react/node_modules/
+shorborno-pmics-lab/dashboard-react/build/
