@@ -1,0 +1,9 @@
+tunnel: fd5bd793-6d5f-45a3-9f7d-200009b12f25
+credentials-file: /home/mcoreai/.cloudflared/fd5bd793-6d5f-45a3-9f7d-200009b12f25.json
+
+ingress:
+  - hostname: pmics.mcoreai.tech
+    service: http://127.0.0.1:18081
+  - hostname: labs.mcoreai.tech
+    service: http://127.0.0.1:18081
+  - service: http_status:404
