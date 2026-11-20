@@ -101,7 +101,7 @@ export const App: React.FC = () => {
         )}
 
         {activeTab === 'library' && (
-          <div className="h-[600px] w-full">
+          <div className="min-h-[700px] h-[750px] w-full">
             <MCOREUnifiedLibrary />
           </div>
         )}

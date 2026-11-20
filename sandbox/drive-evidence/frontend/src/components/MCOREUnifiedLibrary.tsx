@@ -38,7 +38,7 @@ const MCORECore: React.FC<{ isPulsing: boolean }> = ({ isPulsing }) => {
 };
 
 export const MCOREUnifiedLibrary: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'topology' | 'traffic' | 'tutor'>('topology');
+  const [activeTab, setActiveTab] = useState<'topology' | 'traffic' | 'tutor'>('tutor');
   const [query, setQuery] = useState('');
   const [response, setResponse] = useState<any>(null);
   const [loading, setLoading] = useState(false);
