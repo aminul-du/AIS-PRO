@@ -2,10 +2,10 @@ tunnel: 137aca11-7499-479a-b2d4-b9a9e6e45211
 credentials-file: /home/mcoreai/.cloudflared/137aca11-7499-479a-b2d4-b9a9e6e45211.json
 
 ingress:
-  - hostname: Labs.shorbornoai.com
+  - hostname: pmics.mcoreai.tech
+    service: http://127.0.0.1:18081
+  - hostname: labs.mcoreai.tech
     service: http://127.0.0.1:18081
   - hostname: labs.shorbornoai.com
-    service: http://127.0.0.1:18081
-  - hostname: labs.shorbornoai.com.mcoreai.tech
     service: http://127.0.0.1:18081
   - service: http_status:404
