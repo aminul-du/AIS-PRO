@@ -13,10 +13,10 @@ def analyze(payload: dict):
     # Simulate Vertex AI verification logic
     mode = payload.get("language_mode")
     prov = payload.get("provenance")
-    
+
     if mode == "mixed" and prov == "spoofed":
         raise HTTPException(status_code=400, detail="Adversarial detected")
-    
+
     return {"status": "verified"}
 
 if __name__ == "__main__":

@@ -16,7 +16,7 @@ struct Payload {
 async fn main() {
     let port: u16 = env::var("GATEWAY_PORT").unwrap_or_else(|_| "18081".to_string()).parse().unwrap();
     let worker_url = env::var("WORKER_URL").unwrap_or_else(|_| "http://127.0.0.1:18082".to_string());
-    
+
     let process = warp::post()
         .and(warp::path("process"))
         .and(warp::body::json())
@@ -54,7 +54,7 @@ async fn handle_process(payload: Payload, worker_url: String) -> Result<impl war
         .append(true)
         .open("telemetry_ledger.jsonl")
         .unwrap();
-    
+
     let log_entry = serde_json::json!({
         "payload": payload,
         "status": status,
