@@ -1,0 +1,8 @@
+name: AIS-PRO Governance Check
+on: [push, pull_request]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: test -f docs/ARCHITECTURE.md && test -f infra/mcore-edge-manifest.yaml

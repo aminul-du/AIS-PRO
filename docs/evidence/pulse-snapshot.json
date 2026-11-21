@@ -1,0 +1,87 @@
+{
+  "timestamp": "2026-11-24T20:23:01Z",
+  "node": "MCORE-FDR-AIS-001",
+  "endpoint": "/api/overview",
+  "http_status": 200,
+  "overview": {
+    "utc": "2026-11-24 20:23:01 UTC",
+    "python_version": "3.13.18",
+    "identity": {
+      "node_id": "MCORE-FDR-AIS-001",
+      "organization": "Meticulous Core Ltd. (MCore)",
+      "algorithm": "Ed25519",
+      "fingerprint": "SHA256:539CFE31E5FFA6D2",
+      "public_key_b64": "4MQ/8jdKU//VHJoiQ5XDjs0w9h23iyxeumSiLe3LLWg="
+    },
+    "cloudflare_api": true,
+    "cloudflare_tunnel": true,
+    "projects": [
+      {
+        "name": "MCore AI Arena",
+        "role": "Multi-Model Gateway & UI",
+        "port": 18088,
+        "domain": "arena.mcoreai.com",
+        "stack": "Python 3.13 + React",
+        "health": "http://127.0.0.1:18088/api/health",
+        "online": true,
+        "latency_ms": 1,
+        "detail": "Sandbox: ok | Redis: True"
+      },
+      {
+        "name": "MCore FastMCP",
+        "role": "Gemini 4 / Groq / CF Tools",
+        "port": 18089,
+        "domain": "mcp.mcoreai.com",
+        "stack": "Python 3.13 FastMCP",
+        "health": null,
+        "online": true,
+        "latency_ms": 1,
+        "detail": "TCP Socket Ready"
+      },
+      {
+        "name": "MCore Project Pulse",
+        "role": "Live Side-Panel Monitor",
+        "port": 18090,
+        "domain": "pulse.mcoreai.com",
+        "stack": "Python 3.13 FastAPI",
+        "health": null,
+        "online": true,
+        "latency_ms": 1,
+        "detail": "TCP Socket Ready"
+      },
+      {
+        "name": "MCore Axum Bus",
+        "role": "Core MCP Control Plane",
+        "port": 8080,
+        "domain": "bus.mcoremesh.com",
+        "stack": "Rust Axum",
+        "health": null,
+        "online": true,
+        "latency_ms": 1,
+        "detail": "TCP Socket Ready"
+      },
+      {
+        "name": "MCore Quickview",
+        "role": "Host Telemetry Engine",
+        "port": 8787,
+        "domain": "127.0.0.1 (Local)",
+        "stack": "Rust Binary",
+        "health": null,
+        "online": false,
+        "latency_ms": 0,
+        "detail": "Standby / Stopped"
+      },
+      {
+        "name": "MCore Academy / Web",
+        "role": "EdTech & Portal Plane",
+        "port": 3000,
+        "domain": "mcoreacademy.com",
+        "stack": "Next.js / Edge",
+        "health": null,
+        "online": true,
+        "latency_ms": 1,
+        "detail": "TCP Socket Ready"
+      }
+    ]
+  }
+}
