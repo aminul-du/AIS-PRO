@@ -1,0 +1,26 @@
+[Unit]
+Description=MCore NativeBox Axum WS & MCP Server (127.0.0.1:8080 - MDEA #MCORE-NET-001)
+After=network-online.target cloudflared.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=mcore
+Group=mcore
+WorkingDirectory=/srv/mcore/NativeBox
+EnvironmentFile=-/etc/mcore/secrets.env
+Environment="MCORE_BIND_ADDR=127.0.0.1:8080"
+Environment="VERTEX_PROXY_ADDR=127.0.0.1:8090"
+ExecStart=/srv/mcore/NativeBox/bin/mcore-control-plane
+Restart=always
+RestartSec=3
+
+# MDEA Grade A+ Hardening Sandbox (Zero-Secret / Strict Loopback)
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/srv/mcore/NativeBox/data
+
+[Install]
+WantedBy=multi-user.target
