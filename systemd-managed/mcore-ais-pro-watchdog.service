@@ -1,0 +1,13 @@
+[Unit]
+Description=AIS-PRO 7-Layer Continuous Health & Telemetry Watchdog
+After=network-online.target mcore-cf-tunnel.service
+
+[Service]
+Type=oneshot
+Environment=HOME=/home/mcoreai
+ExecStart=/home/mcoreai/bin/ais-pro-watchdog.sh
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

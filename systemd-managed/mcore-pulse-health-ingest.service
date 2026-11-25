@@ -1,0 +1,13 @@
+[Unit]
+Description=MCORE Pulse Healthcheck Overview Snapshot Service
+After=network-online.target mcore-cf-tunnel.service
+
+[Service]
+Type=oneshot
+Environment=HOME=/home/mcoreai
+ExecStart=/home/mcoreai/bin/pulse-health-ingest.sh
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,35 @@
+{
+  "timestamp": "2026-11-25T03:00:02Z",
+  "node": "MCORE-FDR-AIS-001",
+  "overall_status": "DEGRADED",
+  "layers": {
+    "systemd": {
+      "observed": "tunnel=active, pulse_ingest=success",
+      "status": "GREEN"
+    },
+    "pulse_api": {
+      "observed": "HTTP 200",
+      "status": "GREEN"
+    },
+    "dns_tunnel": {
+      "observed": "pulse=NONE, mcp=NONE",
+      "status": "ALERT"
+    },
+    "zero_trust_access": {
+      "observed": "pulse=ERR:<urlopen error [Errno -2] Name or service not known>, mcp=ERR:<urlopen error [Errno -2] Name or service not known>",
+      "status": "ALERT"
+    },
+    "live_mcp_call": {
+      "observed": "MISSING_SERVICE_TOKEN",
+      "status": "ALERT"
+    },
+    "gemini_registry": {
+      "observed": "mcore-bus Disconnected",
+      "status": "ALERT"
+    },
+    "git_sync": {
+      "observed": "branch=chore/ais-pro-governance, head=dfcc787",
+      "status": "GREEN"
+    }
+  }
+}

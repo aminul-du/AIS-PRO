@@ -1,0 +1,11 @@
+[Unit]
+Description=Run AIS-PRO 7-Layer Watchdog every 5 minutes
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=5min
+Persistent=true
+Unit=mcore-ais-pro-watchdog.service
+
+[Install]
+WantedBy=timers.target
